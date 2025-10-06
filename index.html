@@ -1156,7 +1156,8 @@
                 if (user) {
                     // Usuário está logado
                     currentUser = user;
-                    isOwner = user.email === ownerEmail;
+                    isOwner = user.email.trim().toLowerCase() === ownerEmail.trim().toLowerCase();
+
                     
                     // Mostrar aplicação principal
                     document.getElementById('loginPage').style.display = 'none';
@@ -3261,3 +3262,4 @@
     </script>
 </body>
 </html>
+
