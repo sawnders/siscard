@@ -1186,29 +1186,9 @@
         document.getElementById('mainApp').style.display = 'none';
     }
 });
+}
 
-
-                    
-                    // Mostrar aplicação principal
-                    document.getElementById('loginPage').style.display = 'none';
-                    document.getElementById('mainApp').style.display = 'block';
-                    
-                    // Atualizar informações do usuário
-                    document.getElementById('userName').textContent = user.displayName || user.email;
-                    
-                    // Carregar dados do usuário
-                    loadUserData();
-                } else {
-                    // Usuário não está logado
-                    currentUser = null;
-                    isOwner = false;
-                    
-                    // Mostrar página de login
-                    document.getElementById('loginPage').style.display = 'flex';
-                    document.getElementById('mainApp').style.display = 'none';
-                }
-            });
-        }
+                
         
         // Login com Google
         function loginWithGoogle() {
@@ -3292,5 +3272,6 @@
     </script>
 </body>
 </html>
+
 
 
