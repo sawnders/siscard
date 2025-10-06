@@ -1152,11 +1152,41 @@
         
         // Verificar estado de autenticação
         function checkAuthState() {
-            auth.onAuthStateChanged(user => {
-                if (user) {
-                    // Usuário está logado
-                    currentUser = user;
-                    isOwner = user.email.trim().toLowerCase() === ownerEmail.trim().toLowerCase();
+          auth.onAuthStateChanged(user => {
+    if (user) {
+        currentUser = user;
+
+        // Mostra o e-mail logado para teste
+        console.log("Usuário logado:", user.email);
+
+        // Corrige o reconhecimento do proprietário
+        const ownerEmails = [
+            'elielsawnders@gmail.com',
+            'elielsawnders@googlemail.com'
+        ];
+
+        isOwner = ownerEmails.includes(user.email.trim().toLowerCase());
+
+        // Mostra resultado da verificação
+        console.log("É proprietário?", isOwner);
+
+        // Mostrar aplicação principal
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('mainApp').style.display = 'block';
+
+        document.getElementById('userName').textContent = user.displayName || user.email;
+
+        // Carregar dados do usuário
+        loadUserData();
+    } else {
+        currentUser = null;
+        isOwner = false;
+
+        document.getElementById('loginPage').style.display = 'flex';
+        document.getElementById('mainApp').style.display = 'none';
+    }
+});
+
 
                     
                     // Mostrar aplicação principal
@@ -3262,4 +3292,5 @@
     </script>
 </body>
 </html>
+
 
